@@ -1,0 +1,28 @@
+<h1>Lobby ID: <%= lobbyId %></h1>
+<p>Share this link: http://localhost:3000/lobby/<%= lobbyId %>/<%= username %></p>
+<ul id="players">
+  <% players.forEach(p => { %>
+    <li><%= p %></li>
+  <% }); %>
+</ul>
+<button id="start">Start Game</button>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io();
+  const lobbyId = "<%= lobbyId %>";
+  const username = "<%= username %>";
+  socket.emit('joinLobby', { lobbyId, username });
+
+  socket.on('updatePlayers', (players) => {
+    document.getElementById('players').innerHTML = players.map(p => `<li>${p}</li>`).join('');
+  });
+
+  document.getElementById('start').onclick = () => {
+    socket.emit('startGame', lobbyId);
+  };
+
+  socket.on('gameStarted', () => {
+    window.location.href = `/game/${lobbyId}/${username}`;
+  });
+</script>
