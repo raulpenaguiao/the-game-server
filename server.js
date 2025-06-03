@@ -15,6 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
+
+
 // Player Page
 app.get('/player/:playerstring', (req, res) => {
     console.log('Player string:', req.params.playerstring);
