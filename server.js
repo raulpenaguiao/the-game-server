@@ -18,10 +18,10 @@ app.set('views', './views');
 
 
 // Player Page
-app.get('/player/:playerstring', (req, res) => {
+app.get('/player/:playerstring', async (req, res) => {
     console.log('Player string:', req.params.playerstring);
     console.log('Request received at:', new Date().toLocaleTimeString());
-    const { playerstring } = req.params.playerstring;
+    const { playerstring } = req.params;
     // Assuming you have a database connection and Player model
     try {
         const playerInfo = await Player.findOne({ playerstring: playerstring });

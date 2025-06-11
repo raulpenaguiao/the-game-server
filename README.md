@@ -23,8 +23,17 @@ Backend uses MangoDB to store player data and game state.
    ```
 3. Install dependencies
    ```bash
+   sudo apt update
+   sudo apt install nodejs npm
    npm install
    ```
+
+4. Test version
+   ```bash
+   node -v
+   npm -v
+   ```
+
 
 
 ## Running the Server
