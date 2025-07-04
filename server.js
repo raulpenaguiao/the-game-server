@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-// Create Lobby
+// Create Lobby - activated through a click on the index page
 app.post('/create-lobby', (req, res) => {
     const username = req.body.username;
     const lobbyId = uuidv4();
